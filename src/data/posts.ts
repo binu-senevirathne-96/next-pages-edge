@@ -3,166 +3,244 @@ import { BlogPost } from "@/types";
 export const posts: BlogPost[] = [
   {
     id: "1",
-    title: "Getting Started with Next.js Edge Runtime",
-    slug: "getting-started-with-nextjs-edge-runtime",
+    title: "Perfect Homemade Pasta: A Step-by-Step Guide",
+    slug: "perfect-homemade-pasta",
     excerpt:
-      "Learn how to use the Edge Runtime in Next.js for faster, more efficient server-side rendering.",
+      "Learn how to make delicious homemade pasta from scratch with simple ingredients and techniques.",
     content: `
-# Getting Started with Next.js Edge Runtime
+# Perfect Homemade Pasta: A Step-by-Step Guide
 
-Next.js Edge Runtime allows you to run your code at the edge, closer to your users, resulting in faster response times and improved performance.
+There's nothing quite like the taste and texture of fresh, homemade pasta. In this guide, I'll walk you through the process of making perfect pasta from scratch.
 
-## What is Edge Runtime?
+## Ingredients
 
-Edge Runtime is a lightweight JavaScript runtime that runs on the edge of the network, closer to the user. It's designed to be fast and efficient, with a smaller set of APIs compared to Node.js.
+- 2 cups all-purpose flour
+- 3 large eggs
+- 1/2 teaspoon salt
+- 1 tablespoon olive oil
+- Water, as needed
 
-## Benefits of Edge Runtime
+## Equipment
 
-- **Performance**: Faster response times due to proximity to users
-- **Scalability**: Automatically scales based on demand
-- **Cost-effective**: Pay only for what you use
-- **Global reach**: Deploy your code globally with minimal effort
+- Large mixing bowl
+- Fork or dough whisk
+- Clean work surface
+- Pasta machine or rolling pin
+- Sharp knife or pasta cutter
 
-## How to Use Edge Runtime in Next.js
+## Step 1: Make the Dough
 
-To use Edge Runtime in Next.js, you need to add the following configuration to your page:
+Start by creating a mound of flour on your clean work surface. Make a well in the center of the flour and crack the eggs into it. Add the salt and olive oil.
 
-\`\`\`ts
-export const config = {
-  runtime: 'edge',
-}
-\`\`\`
+Using a fork, beat the eggs gently, gradually incorporating the flour from the sides of the well. Continue until the mixture becomes too thick for the fork.
 
-This tells Next.js to use the Edge Runtime for this page instead of the default Node.js runtime.
+## Step 2: Knead the Dough
 
-## Limitations
+Use your hands to bring the remaining flour into the dough. Knead for 8-10 minutes until the dough is smooth and elastic. If it feels too dry, add a little water; if too sticky, add more flour.
 
-Edge Runtime has some limitations compared to Node.js:
+## Step 3: Rest the Dough
 
-- Limited set of APIs
-- No access to the file system
-- Limited memory and CPU
-- No support for native Node.js modules
+Wrap the dough in plastic wrap and let it rest at room temperature for at least 30 minutes. This allows the gluten to relax, making the dough easier to roll out.
 
-Despite these limitations, Edge Runtime is a powerful tool for building fast, efficient web applications.
+## Step 4: Roll and Cut
+
+Divide the dough into smaller portions. Using a pasta machine or rolling pin, roll each portion into thin sheets. For hand-cut pasta, fold the sheets and cut to your desired width.
+
+## Step 5: Cook and Serve
+
+Fresh pasta cooks much faster than dried pasta—usually just 2-3 minutes in boiling salted water. Serve immediately with your favorite sauce.
+
+## Tips for Success
+
+- Keep the dough covered when not in use to prevent it from drying out
+- Dust your work surface and pasta with flour to prevent sticking
+- For colored pasta, add ingredients like spinach, beet, or squid ink to the dough
+- Fresh pasta can be stored in the refrigerator for up to 2 days or frozen for longer storage
+
+Enjoy your homemade pasta with a simple sauce that lets the pasta shine. A classic butter and sage sauce or a light tomato sauce works perfectly!
     `,
-    author: "Jane Doe",
+    author: "Maria Rossi",
     publishedAt: "2023-05-15",
     readingTime: "5 min read",
   },
   {
     id: "2",
-    title: "Building a Blog with Next.js and Tailwind CSS",
-    slug: "building-a-blog-with-nextjs-and-tailwind",
+    title: "5 Essential Spice Blends Every Home Cook Should Know",
+    slug: "essential-spice-blends",
     excerpt:
-      "A step-by-step guide to building a blog with Next.js and Tailwind CSS.",
+      "Discover five versatile spice blends from around the world that will elevate your everyday cooking.",
     content: `
-# Building a Blog with Next.js and Tailwind CSS
+# 5 Essential Spice Blends Every Home Cook Should Know
 
-In this tutorial, we'll build a simple blog using Next.js and Tailwind CSS.
+Spice blends are the secret weapon of experienced cooks. They add depth, complexity, and cultural authenticity to dishes with minimal effort. Here are five essential spice blends from around the world that you should add to your culinary arsenal.
 
-## Setting Up the Project
+## 1. Garam Masala (India)
 
-First, create a new Next.js project with Tailwind CSS:
+Garam masala is a warming spice blend from India that varies by region and family tradition.
 
-\`\`\`bash
-npx create-next-app my-blog --typescript --tailwind
-\`\`\`
+### Ingredients:
+- 2 tablespoons cumin seeds
+- 2 tablespoons coriander seeds
+- 1 tablespoon cardamom seeds
+- 1 tablespoon black peppercorns
+- 1 teaspoon fennel seeds
+- 1 teaspoon mustard seeds
+- 1/2 teaspoon cloves
+- 2 dried bay leaves
+- 2-inch cinnamon stick
+- 1 star anise
 
-## Creating the Blog Posts
+Toast the whole spices in a dry pan until fragrant, then grind to a fine powder. Use in curries, lentil dishes, or sprinkle over roasted vegetables.
 
-We'll store our blog posts as markdown files in the \`/posts\` directory. Each post will have a frontmatter section with metadata like title, date, and author.
+## 2. Za'atar (Middle East)
 
-## Displaying the Blog Posts
+Za'atar is a tangy, herbal blend popular throughout the Middle East.
 
-We'll use the \`getStaticProps\` function to fetch the blog posts at build time and display them on the home page.
+### Ingredients:
+- 2 tablespoons dried thyme
+- 2 tablespoons dried oregano
+- 2 tablespoons sumac
+- 2 tablespoons sesame seeds, toasted
+- 1/2 teaspoon salt
 
-## Creating the Blog Post Page
+Mix all ingredients together. Sprinkle on flatbreads, mix with olive oil for a dip, or use as a rub for meats and vegetables.
 
-We'll use dynamic routes to create a page for each blog post. We'll use the \`getStaticPaths\` function to generate the paths for each post at build time.
+## 3. Herbes de Provence (France)
 
-## Styling with Tailwind CSS
+This classic French blend captures the flavors of the Mediterranean countryside.
 
-Tailwind CSS makes it easy to style our blog without writing custom CSS. We'll use Tailwind's utility classes to create a clean, modern design.
+### Ingredients:
+- 2 tablespoons dried thyme
+- 2 tablespoons dried savory
+- 1 tablespoon dried oregano
+- 1 tablespoon dried rosemary
+- 1 tablespoon dried marjoram
+- 1 teaspoon dried lavender flowers (optional)
 
-## Conclusion
+Mix all herbs together. Use to season grilled meats, roasted chicken, or vegetable dishes.
 
-Building a blog with Next.js and Tailwind CSS is a great way to learn these technologies while creating a useful project.
+## 4. Chinese Five Spice (China)
+
+A balanced blend of sweet, warm, and savory flavors based on the five elements in Chinese philosophy.
+
+### Ingredients:
+- 2 tablespoons Sichuan peppercorns
+- 8 star anise
+- 2 teaspoons cloves
+- 2 tablespoons fennel seeds
+- 2 tablespoons cinnamon or cassia bark
+
+Toast the whole spices lightly, then grind to a powder. Use in marinades for meat, stir-fries, or even desserts.
+
+## 5. Berbere (Ethiopia)
+
+This complex, spicy blend is the backbone of Ethiopian cuisine.
+
+### Ingredients:
+- 2 tablespoons paprika
+- 1 tablespoon cayenne pepper (adjust to taste)
+- 1 teaspoon cumin seeds
+- 1 teaspoon coriander seeds
+- 1 teaspoon fenugreek seeds
+- 1 teaspoon black peppercorns
+- 1 teaspoon cardamom seeds
+- 1 teaspoon dried ginger
+- 1/2 teaspoon cinnamon
+- 1/2 teaspoon turmeric
+- 1/4 teaspoon cloves
+- 1/4 teaspoon allspice
+
+Toast the whole spices, then combine with the ground spices. Use in stews, lentil dishes, or as a rub for meats.
+
+## Storage Tips
+
+Store your spice blends in airtight containers away from heat and light. For maximum flavor, use within 3-6 months. Consider making smaller batches more frequently rather than large batches that might lose potency over time.
     `,
-    author: "John Smith",
+    author: "James Chen",
     publishedAt: "2023-06-20",
     readingTime: "8 min read",
   },
   {
     id: "3",
-    title: "Understanding Static Site Generation (SSG) in Next.js",
-    slug: "understanding-ssg-in-nextjs",
+    title: "The Art of Sourdough: Creating and Maintaining Your Starter",
+    slug: "art-of-sourdough-starter",
     excerpt:
-      "A deep dive into Static Site Generation (SSG) in Next.js and when to use it.",
+      "Learn how to create, maintain, and troubleshoot a healthy sourdough starter for delicious homemade bread.",
     content: `
-# Understanding Static Site Generation (SSG) in Next.js
+# The Art of Sourdough: Creating and Maintaining Your Starter
 
-Static Site Generation (SSG) is a powerful feature in Next.js that allows you to pre-render pages at build time.
+Sourdough bread has experienced a renaissance in recent years, and for good reason. The complex flavors, chewy texture, and health benefits make it a favorite among bread enthusiasts. At the heart of every great sourdough is a healthy, active starter.
 
-## What is SSG?
+## What is a Sourdough Starter?
 
-SSG is a technique where pages are generated at build time rather than at request time. This results in faster page loads and better SEO.
+A sourdough starter is a fermented mixture of flour and water containing wild yeast and lactic acid bacteria. These microorganisms are responsible for leavening the bread and developing its characteristic tangy flavor.
 
-## When to Use SSG
+## Creating Your Starter from Scratch
 
-SSG is ideal for pages that don't need to be updated frequently and can be pre-rendered at build time. Examples include:
+### Day 1:
+- Mix 50g whole wheat flour (or rye flour) with 50g water at room temperature
+- Stir until no dry flour remains
+- Cover loosely and let sit at room temperature (70-75°F/21-24°C) for 24 hours
 
-- Blog posts
-- Documentation
-- Marketing pages
-- Product listings
+### Days 2-7:
+- Discard all but 50g of the starter
+- Add 50g flour and 50g water
+- Mix well and cover loosely
+- Let sit at room temperature for 24 hours
+- Repeat this process daily
 
-## How to Use SSG in Next.js
+By day 7, your starter should be doubling in size within 8-12 hours after feeding and showing plenty of bubbles. If not, continue the feeding process for a few more days.
 
-To use SSG in Next.js, you need to export a \`getStaticProps\` function from your page:
+## Maintaining Your Starter
 
-\`\`\`tsx
-export async function getStaticProps() {
-  // Fetch data from an API
-  const res = await fetch('https://api.example.com/data')
-  const data = await res.json()
+### Regular Feeding Schedule:
+- For an active starter used frequently: Feed once daily at room temperature
+- For less frequent use: Store in the refrigerator and feed once weekly
 
-  // Return the data as props
-  return {
-    props: {
-      data,
-    },
-  }
-}
-\`\`\`
+### Feeding Ratio:
+A common ratio is 1:1:1 (starter:flour:water by weight)
+- 50g starter
+- 50g flour
+- 50g water
 
-For dynamic routes, you also need to export a \`getStaticPaths\` function:
+### Signs of a Healthy Starter:
+- Doubles in size within 4-8 hours after feeding
+- Plenty of bubbles throughout
+- Pleasant, tangy aroma (like yogurt or beer)
+- Consistent rise and fall pattern
 
-\`\`\`tsx
-export async function getStaticPaths() {
-  // Fetch the list of possible values for id
-  const res = await fetch('https://api.example.com/posts')
-  const posts = await res.json()
+## Troubleshooting Common Issues
 
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: post.id },
-  }))
+### Problem: Starter isn't rising
+**Solutions:**
+- Ensure your room temperature is warm enough (70-75°F/21-24°C)
+- Try using filtered water instead of tap water
+- Add a small amount of rye flour to your feeding
+- Be patient—new starters can take 2-3 weeks to become fully active
 
-  // We'll pre-render only these paths at build time
-  return { paths, fallback: false }
-}
-\`\`\`
+### Problem: Strange odor (acetone/nail polish remover)
+**Solution:** Your starter is hungry! Feed it more frequently or increase the amount of flour in your feeding.
 
-## Incremental Static Regeneration (ISR)
+### Problem: Mold or discoloration
+**Solution:** If you see pink, orange, or blue mold, discard your starter and begin again. A thin layer of liquid (hooch) on top is normal and can be stirred back in or poured off.
 
-Next.js also supports Incremental Static Regeneration (ISR), which allows you to update static pages after they've been built. This is useful for pages that need to be updated occasionally but not on every request.
+## Using Your Starter
+
+Your starter is ready to use when it reliably doubles in size and is full of bubbles. For best results, use your starter at its peak rise or just as it begins to fall.
+
+Most sourdough bread recipes call for "active" or "fed" starter, meaning starter that has been fed 4-12 hours before using it in your dough.
+
+## Storing Your Starter
+
+If you won't be baking for a while, you can store your starter in the refrigerator. Feed it, let it sit at room temperature for 1-2 hours, then refrigerate. It will need to be fed about once a week.
+
+For long-term storage, you can dry your starter or freeze it.
 
 ## Conclusion
 
-SSG is a powerful feature in Next.js that can significantly improve the performance and SEO of your website. By understanding when and how to use it, you can build faster, more efficient web applications.
+Creating and maintaining a sourdough starter is both a science and an art. With patience and consistent care, your starter will become a reliable companion for creating delicious sourdough bread for years to come.
     `,
-    author: "Alice Johnson",
+    author: "Sarah Johnson",
     publishedAt: "2023-07-10",
     readingTime: "6 min read",
   },

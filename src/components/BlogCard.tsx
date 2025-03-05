@@ -8,26 +8,28 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white dark:bg-amber-950 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-amber-100 dark:border-amber-800">
       <div className="p-6">
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400">
+          <h2 className="text-xl font-semibold text-amber-800 dark:text-amber-100 mb-2 hover:text-amber-600 dark:hover:text-amber-300">
             {post.title}
           </h2>
         </Link>
-        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <div className="flex items-center text-sm text-amber-600 dark:text-amber-300 mb-4">
           <span>{post.author}</span>
           <span className="mx-2">•</span>
           <span>{post.publishedAt}</span>
           <span className="mx-2">•</span>
           <span>{post.readingTime}</span>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
+        <p className="text-amber-700 dark:text-amber-200 mb-4">
+          {post.excerpt}
+        </p>
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+          className="inline-flex items-center text-amber-600 dark:text-amber-300 hover:underline"
         >
-          Read more
+          Read recipe
           <svg
             className="ml-1 w-4 h-4"
             fill="none"

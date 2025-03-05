@@ -3,46 +3,53 @@ import Layout from "@/components/Layout";
 export default function About() {
   return (
     <Layout
-      title="About | Edge Blog"
-      description="Learn more about Edge Blog and how it was built."
+      title="About | Culinary Canvas"
+      description="Learn more about Culinary Canvas and our food philosophy."
     >
       <div className="space-y-8 max-w-3xl mx-auto">
         <section>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            About Edge Blog
+          <h1 className="text-4xl font-bold text-amber-800 dark:text-amber-100 mb-4">
+            About Culinary Canvas
           </h1>
-          <div className="prose dark:prose-invert">
+          <div className="prose dark:prose-invert prose-amber">
             <p>
-              Edge Blog is a simple blog application built with Next.js 15,
-              React 18, TypeScript, and Tailwind CSS. It uses the Pages Router
-              and Edge Runtime to demonstrate how to build a modern web
-              application.
+              Culinary Canvas is a food blog dedicated to celebrating the art of
+              cooking and the joy of sharing delicious meals. We believe that
+              cooking is both a creative expression and a way to connect with
+              our cultural heritage and loved ones.
             </p>
             <p>
-              This blog was created as a demonstration of using Edge Runtime
-              with Static Site Generation (SSG) in Next.js. The Edge Runtime
-              allows you to run your code at the edge, closer to your users,
-              resulting in faster response times and improved performance.
+              Our recipes focus on seasonal ingredients, traditional techniques
+              with modern twists, and the stories behind the dishes we love.
+              Whether you&apos;re a beginner cook or an experienced chef, we
+              hope to inspire your culinary adventures.
             </p>
-            <h2>Technologies Used</h2>
+            <h2>Our Food Philosophy</h2>
             <ul>
-              <li>Next.js 15</li>
-              <li>React 18</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
-              <li>Edge Runtime</li>
-              <li>Pages Router</li>
-              <li>Turbopack</li>
+              <li>
+                Cook with the seasons for the best flavor and sustainability
+              </li>
+              <li>Respect traditional techniques while embracing innovation</li>
+              <li>Share the cultural context and stories behind recipes</li>
+              <li>Make cooking accessible to all skill levels</li>
+              <li>Celebrate the joy of sharing food with others</li>
             </ul>
-            <h2>Features</h2>
+            <h2>Technical Details</h2>
+            <p>
+              This blog is built with modern web technologies to provide a fast,
+              responsive experience:
+            </p>
             <ul>
-              <li>Static Site Generation (SSG)</li>
-              <li>Edge Runtime</li>
-              <li>Responsive Design</li>
-              <li>Dark Mode Support</li>
-              <li>API Routes</li>
-              <li>Middleware</li>
+              <li>Next.js 15 with Edge Runtime for performance</li>
+              <li>React 19 for interactive UI components</li>
+              <li>TypeScript for type safety</li>
+              <li>Tailwind CSS for beautiful, responsive design</li>
+              <li>Static Site Generation for fast page loads</li>
             </ul>
+            <p>
+              We hope you enjoy exploring our recipes and food stories. Happy
+              cooking!
+            </p>
           </div>
         </section>
       </div>

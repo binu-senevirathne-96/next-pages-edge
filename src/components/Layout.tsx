@@ -16,8 +16,8 @@ interface LayoutProps {
 
 export default function Layout({
   children,
-  title = "Next.js Edge Blog",
-  description = "A simple blog built with Next.js and Edge Runtime",
+  title = "Culinary Canvas",
+  description = "A food blog celebrating the art of cooking with recipes, techniques, and culinary inspiration",
 }: LayoutProps) {
   return (
     <div
@@ -29,33 +29,33 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-white dark:bg-gray-900 shadow-sm">
+      <header className="bg-amber-50 dark:bg-amber-900 shadow-sm">
         <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <Link
                 href="/"
-                className="text-xl font-bold text-gray-900 dark:text-white"
+                className="text-xl font-bold text-amber-800 dark:text-amber-100"
               >
-                Edge Blog
+                Culinary Canvas
               </Link>
             </div>
             <div className="flex space-x-4">
               <Link
                 href="/"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="text-amber-700 dark:text-amber-200 hover:text-amber-900 dark:hover:text-white"
               >
                 Home
               </Link>
               <Link
                 href="/blog"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="text-amber-700 dark:text-amber-200 hover:text-amber-900 dark:hover:text-white"
               >
-                Blog
+                Recipes
               </Link>
               <Link
                 href="/about"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="text-amber-700 dark:text-amber-200 hover:text-amber-900 dark:hover:text-white"
               >
                 About
               </Link>
@@ -64,17 +64,17 @@ export default function Layout({
         </nav>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow bg-amber-50 dark:bg-gray-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {children}
         </div>
       </main>
 
-      <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <footer className="bg-amber-100 dark:bg-amber-900 border-t border-amber-200 dark:border-amber-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} Edge Blog. Built with Next.js and
-            Edge Runtime.
+          <p className="text-center text-amber-700 dark:text-amber-200">
+            &copy; {new Date().getFullYear()} Culinary Canvas. Built with
+            Next.js and Edge Runtime.
           </p>
         </div>
       </footer>

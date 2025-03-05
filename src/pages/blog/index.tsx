@@ -15,16 +15,17 @@ interface BlogIndexProps {
 export default function BlogIndex({ posts }: BlogIndexProps) {
   return (
     <Layout
-      title="Blog | Edge Blog"
-      description="Read our latest blog posts about Next.js and Edge Runtime."
+      title="Recipes | Culinary Canvas"
+      description="Explore our collection of delicious recipes for every occasion."
     >
       <div className="space-y-8">
         <section className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Blog
+          <h1 className="text-4xl font-bold text-amber-800 dark:text-amber-100 mb-4">
+            Recipes
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Read our latest blog posts about Next.js and Edge Runtime.
+          <p className="text-xl text-amber-700 dark:text-amber-200 max-w-3xl mx-auto">
+            Explore our collection of delicious recipes, cooking techniques, and
+            culinary inspiration.
           </p>
         </section>
 

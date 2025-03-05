@@ -1,6 +1,6 @@
 # Next.js 15 Edge Runtime Implementation Notes
 
-This document outlines the challenges and solutions encountered while implementing a Next.js 15 application with Edge Runtime, Pages Router, React 19, TypeScript, and other modern web technologies.
+This document outlines the challenges and solutions encountered while implementing a Next.js 15 food blog application with Edge Runtime, Pages Router, React 19, TypeScript, and other modern web technologies.
 
 ## Core Technologies
 
@@ -11,6 +11,15 @@ This document outlines the challenges and solutions encountered while implementi
 - **Turbopack**: For faster development builds
 - **ESLint 9**: For code quality and consistency
 - **Tailwind CSS 4**: For responsive design
+
+## Application Theme
+
+This application is implemented as a food blog called "Culinary Canvas" with:
+
+- Recipe posts with detailed instructions
+- Food-themed color scheme using amber/warm tones
+- Culinary-focused content and terminology
+- Responsive design for all devices
 
 ## Useful Scripts
 
