@@ -1,6 +1,6 @@
 # Next.js 15 Edge Runtime Implementation Notes
 
-This document outlines the challenges and solutions encountered while implementing a Next.js 15 food blog application with Edge Runtime, Pages Router, React 19, TypeScript, and other modern web technologies.
+This document outlines the key aspects of implementing a simple Next.js 15 application with Edge Runtime, Pages Router, React 19, and TypeScript.
 
 ## Core Technologies
 
@@ -12,18 +12,9 @@ This document outlines the challenges and solutions encountered while implementi
 - **ESLint 9**: For code quality and consistency
 - **Tailwind CSS 4**: For responsive design
 
-## Application Theme
-
-This application is implemented as a food blog called "Culinary Canvas" with:
-
-- Recipe posts with detailed instructions
-- Food-themed color scheme using amber/warm tones
-- Culinary-focused content and terminology
-- Responsive design for all devices
-
 ## Useful Scripts
 
-To enhance your development workflow, add these helpful scripts to your `package.json`:
+To enhance your development workflow, the following helpful scripts are included in `package.json`:
 
 ```json
 "scripts": {
@@ -37,25 +28,23 @@ To enhance your development workflow, add these helpful scripts to your `package
 }
 ```
 
-- **check-types**: Runs TypeScript type checking without emitting files, useful for catching type errors early
-- **deep-clean**: Removes build artifacts and cache directories to resolve stubborn build issues
-- **lint**: Runs ESLint to ensure code quality and consistency
+- **check-types**: Runs TypeScript type checking without emitting files
+- **deep-clean**: Removes build artifacts and cache directories
+- **lint**: Runs ESLint to ensure code quality
 
-## Key Challenges and Solutions
+## Key Aspects of Edge Runtime
 
 ### 1. Edge Runtime Configuration
 
-**Issue**: Configuring Edge Runtime properly in Next.js 15 with Pages Router.
+To use Edge Runtime in a Next.js page, add the following configuration:
 
-**Solution**:
+```typescript
+export const config = {
+  runtime: 'experimental-edge',
+};
+```
 
-- Use `experimental-edge` instead of just `edge` in runtime configuration:
-    ```typescript
-    export const config = {
-        runtime: 'experimental-edge',
-    };
-    ```
-- This must be added to each page that should use the Edge Runtime.
+This must be added to each page that should use the Edge Runtime.
 
 **Note**: The Edge Runtime is still experimental in Next.js 15 with Pages Router, so you'll see warnings like:
 
@@ -63,201 +52,84 @@ To enhance your development workflow, add these helpful scripts to your `package
 ⚠ You are using an experimental edge runtime, the API might change.
 ```
 
-### 2. Static Generation with Edge Runtime
+### 2. Edge API Routes
 
-**Issue**: `getStaticProps` is not fully supported with Edge Runtime, causing build errors.
+Edge API routes use a different response format than traditional Next.js API routes:
 
-**Solution**:
+```typescript
+// Traditional API route (Node.js)
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  res.status(200).json({ message: 'Hello from the API!' });
+}
 
-- Accept that these limitations exist and handle them gracefully
-- During build, you'll see warnings like:
-    ```
-    "getStaticProps" is not yet supported fully with "experimental-edge", detected on /blog
-    ```
-- These warnings are expected and don't prevent the application from working
+// Edge API route
+export const config = {
+  runtime: 'experimental-edge',
+};
 
-### 3. Data Fetching in Edge Runtime
+export default async function handler(req: NextRequest) {
+  return new Response(JSON.stringify({ message: 'Hello from the Edge API!' }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+}
+```
 
-**Issue**: Standard data fetching methods may fail in Edge Runtime, especially during build.
+### 3. Next.js Configuration for Edge
 
-**Solution**:
+The `next.config.ts` file includes appropriate settings for Edge Runtime:
 
-- Implement fallback mechanisms for data fetching:
+```typescript
+const nextConfig = {
+  reactStrictMode: true,
+  serverExternalPackages: [],
+  output: 'standalone',
+  experimental: {
+    disableOptimizedLoading: true,
+  },
+  // Additional configuration...
+};
+```
 
-    ```typescript
-    export async function fetchAllPosts(): Promise<BlogPost[]> {
-        // Check if we're in development mode first
-        if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
-            // Return mock data directly
-            return mockPosts;
-        }
+### 4. Middleware with Edge Runtime
 
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch posts: ${response.status}`);
-            }
-            const data: BlogPostsResponse = await response.json();
-            return data.posts;
-        } catch (error) {
-            console.error('Error fetching posts:', error);
-            // Fall back to mock data
-            return mockPosts;
-        }
-    }
-    ```
+Middleware works well with Edge Runtime and can be used for request logging, header manipulation, and more:
 
-### 4. Next.js Configuration for Edge
+```typescript
+export function middleware(request: NextRequest) {
+  // Log the path that is being accessed
+  console.log(`Middleware: Accessing ${request.nextUrl.pathname}`);
 
-**Issue**: Proper configuration of `next.config.ts` for Edge Runtime compatibility.
+  // Continue with the request
+  return NextResponse.next();
+}
 
-**Solution**:
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+};
+```
 
-- Configure `next.config.ts` with appropriate settings:
-    ```typescript
-    const nextConfig = {
-        reactStrictMode: true,
-        swcMinify: true,
-        serverExternalPackages: [],
-        output: 'standalone',
-        images: {
-            domains: [],
-        },
-        experimental: {
-            disableOptimizedLoading: true,
-        },
-        async headers() {
-            return [
-                {
-                    source: '/(.*)',
-                    headers: [
-                        {
-                            key: 'X-Content-Type-Options',
-                            value: 'nosniff',
-                        },
-                        {
-                            key: 'X-Frame-Options',
-                            value: 'DENY',
-                        },
-                        {
-                            key: 'X-XSS-Protection',
-                            value: '1; mode=block',
-                        },
-                    ],
-                },
-            ];
-        },
-    };
-    ```
+## Benefits of Edge Runtime
 
-### 5. Build Artifacts and Caching Issues
+1. **Performance**: Faster page loads and API responses
+2. **Global Distribution**: Code runs closer to users worldwide
+3. **Cost Efficiency**: Reduced server costs compared to traditional server rendering
+4. **Scalability**: Automatically scales with traffic
+5. **Security**: Reduced attack surface with minimal runtime
 
-**Issue**: Corrupted build artifacts causing errors like missing `build-manifest.json`.
+## Limitations of Edge Runtime
 
-**Solution**:
-
-- Clean the `.next` directory before rebuilding:
-    ```bash
-    rm -rf .next
-    ```
-- This ensures a clean build without any corrupted cache files
-
-### 6. Middleware with Edge Runtime
-
-**Issue**: Configuring middleware to work properly with Edge Runtime.
-
-**Solution**:
-
-- Keep middleware simple and focused on specific tasks
-- Ensure middleware is compatible with Edge Runtime limitations:
-    ```typescript
-    export function middleware(request: NextRequest) {
-        // Simple request logging or header manipulation
-        // Avoid complex operations not supported in Edge Runtime
-    }
-    ```
-
-### 7. React 19 Compatibility
-
-**Issue**: Ensuring compatibility with React 19's new features and changes.
-
-**Solution**:
-
-- Use the latest `@types/react` and `@types/react-dom` for TypeScript compatibility
-- Ensure all components follow React 19 best practices
-- Test thoroughly to catch any compatibility issues
-
-### 8. Turbopack Integration
-
-**Issue**: Configuring Turbopack for faster development builds.
-
-**Solution**:
-
-- Add the `--turbopack` flag to the dev script:
-    ```json
-    "scripts": {
-      "dev": "next dev --turbopack"
-    }
-    ```
-- Be aware that Turbopack may have some limitations with certain Next.js features
-
-### 9. ESLint 9 Configuration
-
-**Issue**: Setting up ESLint 9 with Next.js 15.
-
-**Solution**:
-
-- Use the latest `eslint-config-next` package
-- Include `@eslint/eslintrc` in your dependencies
-- Configure ESLint to work with TypeScript and React 19
-
-### 10. Deployment Configuration
-
-**Issue**: Configuring for deployment platforms like Vercel.
-
-**Solution**:
-
-- Add a `vercel.json` configuration file:
-    ```json
-    {
-        "version": 2,
-        "buildCommand": "yarn build",
-        "devCommand": "yarn dev",
-        "installCommand": "yarn install",
-        "framework": "nextjs",
-        "regions": ["iad1"],
-        "github": {
-            "silent": true
-        }
-    }
-    ```
-- Add a deployment script to `package.json`:
-    ```json
-    "scripts": {
-      "deploy": "vercel deploy --prod"
-    }
-    ```
+1. **Limited Node.js APIs**: Not all Node.js APIs are available
+2. **Package Compatibility**: Not all npm packages work in Edge Runtime
+3. **Debugging Challenges**: Debugging can be more difficult
+4. **Experimental Status**: The API may change in future versions
 
 ## Best Practices
 
-1. **Mock Data Strategy**: Always have mock data available for development and as fallbacks
-2. **Error Handling**: Implement robust error handling, especially for data fetching
-3. **Progressive Enhancement**: Design your application to work even if some Edge features fail
-4. **Type Safety**: Leverage TypeScript to catch potential issues early
-5. **Performance Monitoring**: Monitor Edge Runtime performance in production
-6. **Development Workflow**: Implement a robust development workflow:
-    - Run `yarn check-types` regularly to catch type errors before they cause runtime issues
-    - Use `yarn deep-clean` when encountering stubborn build issues or after major dependency updates
-    - Run `yarn lint` before commits to maintain code quality
-    - Consider setting up pre-commit hooks for these checks
-
-## Limitations to Be Aware Of
-
-1. **Static Generation**: `getStaticProps` has limited support in Edge Runtime
-2. **API Access**: Some APIs available in Node.js are not available in Edge Runtime
-3. **Build Process**: Edge Runtime may cause expected warnings during build
-4. **Third-party Libraries**: Not all libraries are compatible with Edge Runtime
-
-## Conclusion
-
-Next.js 15 with Edge Runtime, Pages Router, React 19, and TypeScript offers a powerful combination for building modern web applications. While there are challenges to overcome, the benefits of improved performance and developer experience make it worthwhile. By following the solutions outlined in this document, you can successfully implement these technologies in your projects.
+1. **Error Handling**: Implement robust error handling for Edge functions
+2. **Progressive Enhancement**: Design your application to work even if Edge features fail
+3. **Type Safety**: Leverage TypeScript to catch potential issues early
+4. **Performance Monitoring**: Monitor Edge Runtime performance in production
+5. **Development Workflow**: Use the provided scripts for a smooth development experience
