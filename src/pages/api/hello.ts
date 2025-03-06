@@ -2,13 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
-  message: string;
-  runtime: string;
+    name: string;
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  res.status(200).json({
-    message: 'Hello from the API!',
-    runtime: 'Node.js (not Edge)',
-  });
+    res.status(200).json({ name: 'John Doe' });
 }
