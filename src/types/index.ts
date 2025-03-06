@@ -1,18 +1,18 @@
 export interface BlogPost {
-    id: string;
-    title: string;
-    slug: string;
-    excerpt: string;
-    content: string;
-    author: string;
-    publishedAt: string;
-    readingTime: string;
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  publishedAt: string;
+  readingTime: string;
 }
 
 export interface BlogPostsResponse {
-    posts: BlogPost[];
+  posts: BlogPost[];
 }
 
 export interface BlogPostResponse {
-    post: BlogPost;
+  post: BlogPost;
 }

@@ -50,11 +50,11 @@ To enhance your development workflow, add these helpful scripts to your `package
 **Solution**:
 
 - Use `experimental-edge` instead of just `edge` in runtime configuration:
-    ```typescript
-    export const config = {
-        runtime: 'experimental-edge',
-    };
-    ```
+  ```typescript
+  export const config = {
+    runtime: 'experimental-edge',
+  };
+  ```
 - This must be added to each page that should use the Edge Runtime.
 
 **Note**: The Edge Runtime is still experimental in Next.js 15 with Pages Router, so you'll see warnings like:
@@ -71,9 +71,9 @@ To enhance your development workflow, add these helpful scripts to your `package
 
 - Accept that these limitations exist and handle them gracefully
 - During build, you'll see warnings like:
-    ```
-    "getStaticProps" is not yet supported fully with "experimental-edge", detected on /blog
-    ```
+  ```
+  "getStaticProps" is not yet supported fully with "experimental-edge", detected on /blog
+  ```
 - These warnings are expected and don't prevent the application from working
 
 ### 3. Data Fetching in Edge Runtime
@@ -84,28 +84,28 @@ To enhance your development workflow, add these helpful scripts to your `package
 
 - Implement fallback mechanisms for data fetching:
 
-    ```typescript
-    export async function fetchAllPosts(): Promise<BlogPost[]> {
-        // Check if we're in development mode first
-        if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
-            // Return mock data directly
-            return mockPosts;
-        }
-
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch posts: ${response.status}`);
-            }
-            const data: BlogPostsResponse = await response.json();
-            return data.posts;
-        } catch (error) {
-            console.error('Error fetching posts:', error);
-            // Fall back to mock data
-            return mockPosts;
-        }
+  ```typescript
+  export async function fetchAllPosts(): Promise<BlogPost[]> {
+    // Check if we're in development mode first
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+      // Return mock data directly
+      return mockPosts;
     }
-    ```
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch posts: ${response.status}`);
+      }
+      const data: BlogPostsResponse = await response.json();
+      return data.posts;
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      // Fall back to mock data
+      return mockPosts;
+    }
+  }
+  ```
 
 ### 4. Next.js Configuration for Edge
 
@@ -114,41 +114,41 @@ To enhance your development workflow, add these helpful scripts to your `package
 **Solution**:
 
 - Configure `next.config.ts` with appropriate settings:
-    ```typescript
-    const nextConfig = {
-        reactStrictMode: true,
-        swcMinify: true,
-        serverExternalPackages: [],
-        output: 'standalone',
-        images: {
-            domains: [],
+  ```typescript
+  const nextConfig = {
+    reactStrictMode: true,
+    swcMinify: true,
+    serverExternalPackages: [],
+    output: 'standalone',
+    images: {
+      domains: [],
+    },
+    experimental: {
+      disableOptimizedLoading: true,
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'X-XSS-Protection',
+              value: '1; mode=block',
+            },
+          ],
         },
-        experimental: {
-            disableOptimizedLoading: true,
-        },
-        async headers() {
-            return [
-                {
-                    source: '/(.*)',
-                    headers: [
-                        {
-                            key: 'X-Content-Type-Options',
-                            value: 'nosniff',
-                        },
-                        {
-                            key: 'X-Frame-Options',
-                            value: 'DENY',
-                        },
-                        {
-                            key: 'X-XSS-Protection',
-                            value: '1; mode=block',
-                        },
-                    ],
-                },
-            ];
-        },
-    };
-    ```
+      ];
+    },
+  };
+  ```
 
 ### 5. Build Artifacts and Caching Issues
 
@@ -157,9 +157,9 @@ To enhance your development workflow, add these helpful scripts to your `package
 **Solution**:
 
 - Clean the `.next` directory before rebuilding:
-    ```bash
-    rm -rf .next
-    ```
+  ```bash
+  rm -rf .next
+  ```
 - This ensures a clean build without any corrupted cache files
 
 ### 6. Middleware with Edge Runtime
@@ -170,12 +170,12 @@ To enhance your development workflow, add these helpful scripts to your `package
 
 - Keep middleware simple and focused on specific tasks
 - Ensure middleware is compatible with Edge Runtime limitations:
-    ```typescript
-    export function middleware(request: NextRequest) {
-        // Simple request logging or header manipulation
-        // Avoid complex operations not supported in Edge Runtime
-    }
-    ```
+  ```typescript
+  export function middleware(request: NextRequest) {
+    // Simple request logging or header manipulation
+    // Avoid complex operations not supported in Edge Runtime
+  }
+  ```
 
 ### 7. React 19 Compatibility
 
@@ -194,11 +194,11 @@ To enhance your development workflow, add these helpful scripts to your `package
 **Solution**:
 
 - Add the `--turbopack` flag to the dev script:
-    ```json
-    "scripts": {
-      "dev": "next dev --turbopack"
-    }
-    ```
+  ```json
+  "scripts": {
+    "dev": "next dev --turbopack"
+  }
+  ```
 - Be aware that Turbopack may have some limitations with certain Next.js features
 
 ### 9. ESLint 9 Configuration
@@ -218,25 +218,25 @@ To enhance your development workflow, add these helpful scripts to your `package
 **Solution**:
 
 - Add a `vercel.json` configuration file:
-    ```json
-    {
-        "version": 2,
-        "buildCommand": "yarn build",
-        "devCommand": "yarn dev",
-        "installCommand": "yarn install",
-        "framework": "nextjs",
-        "regions": ["iad1"],
-        "github": {
-            "silent": true
-        }
+  ```json
+  {
+    "version": 2,
+    "buildCommand": "yarn build",
+    "devCommand": "yarn dev",
+    "installCommand": "yarn install",
+    "framework": "nextjs",
+    "regions": ["iad1"],
+    "github": {
+      "silent": true
     }
-    ```
+  }
+  ```
 - Add a deployment script to `package.json`:
-    ```json
-    "scripts": {
-      "deploy": "vercel deploy --prod"
-    }
-    ```
+  ```json
+  "scripts": {
+    "deploy": "vercel deploy --prod"
+  }
+  ```
 
 ## Best Practices
 
@@ -246,10 +246,10 @@ To enhance your development workflow, add these helpful scripts to your `package
 4. **Type Safety**: Leverage TypeScript to catch potential issues early
 5. **Performance Monitoring**: Monitor Edge Runtime performance in production
 6. **Development Workflow**: Implement a robust development workflow:
-    - Run `yarn check-types` regularly to catch type errors before they cause runtime issues
-    - Use `yarn deep-clean` when encountering stubborn build issues or after major dependency updates
-    - Run `yarn lint` before commits to maintain code quality
-    - Consider setting up pre-commit hooks for these checks
+   - Run `yarn check-types` regularly to catch type errors before they cause runtime issues
+   - Use `yarn deep-clean` when encountering stubborn build issues or after major dependency updates
+   - Run `yarn lint` before commits to maintain code quality
+   - Consider setting up pre-commit hooks for these checks
 
 ## Limitations to Be Aware Of
 
