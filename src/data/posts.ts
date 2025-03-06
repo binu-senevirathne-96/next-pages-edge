@@ -1,13 +1,13 @@
-import { BlogPost } from "@/types";
+import { BlogPost } from '@/types';
 
 export const posts: BlogPost[] = [
-  {
-    id: "1",
-    title: "Perfect Homemade Pasta: A Step-by-Step Guide",
-    slug: "perfect-homemade-pasta",
-    excerpt:
-      "Learn how to make delicious homemade pasta from scratch with simple ingredients and techniques.",
-    content: `
+    {
+        id: '1',
+        title: 'Perfect Homemade Pasta: A Step-by-Step Guide',
+        slug: 'perfect-homemade-pasta',
+        excerpt:
+            'Learn how to make delicious homemade pasta from scratch with simple ingredients and techniques.',
+        content: `
 # Perfect Homemade Pasta: A Step-by-Step Guide
 
 There's nothing quite like the taste and texture of fresh, homemade pasta. In this guide, I'll walk you through the process of making perfect pasta from scratch.
@@ -59,17 +59,17 @@ Fresh pasta cooks much faster than dried pasta—usually just 2-3 minutes in boi
 
 Enjoy your homemade pasta with a simple sauce that lets the pasta shine. A classic butter and sage sauce or a light tomato sauce works perfectly!
     `,
-    author: "Maria Rossi",
-    publishedAt: "2023-05-15",
-    readingTime: "5 min read",
-  },
-  {
-    id: "2",
-    title: "5 Essential Spice Blends Every Home Cook Should Know",
-    slug: "essential-spice-blends",
-    excerpt:
-      "Discover five versatile spice blends from around the world that will elevate your everyday cooking.",
-    content: `
+        author: 'Maria Rossi',
+        publishedAt: '2023-05-15',
+        readingTime: '5 min read',
+    },
+    {
+        id: '2',
+        title: '5 Essential Spice Blends Every Home Cook Should Know',
+        slug: 'essential-spice-blends',
+        excerpt:
+            'Discover five versatile spice blends from around the world that will elevate your everyday cooking.',
+        content: `
 # 5 Essential Spice Blends Every Home Cook Should Know
 
 Spice blends are the secret weapon of experienced cooks. They add depth, complexity, and cultural authenticity to dishes with minimal effort. Here are five essential spice blends from around the world that you should add to your culinary arsenal.
@@ -156,17 +156,17 @@ Toast the whole spices, then combine with the ground spices. Use in stews, lenti
 
 Store your spice blends in airtight containers away from heat and light. For maximum flavor, use within 3-6 months. Consider making smaller batches more frequently rather than large batches that might lose potency over time.
     `,
-    author: "James Chen",
-    publishedAt: "2023-06-20",
-    readingTime: "8 min read",
-  },
-  {
-    id: "3",
-    title: "The Art of Sourdough: Creating and Maintaining Your Starter",
-    slug: "art-of-sourdough-starter",
-    excerpt:
-      "Learn how to create, maintain, and troubleshoot a healthy sourdough starter for delicious homemade bread.",
-    content: `
+        author: 'James Chen',
+        publishedAt: '2023-06-20',
+        readingTime: '8 min read',
+    },
+    {
+        id: '3',
+        title: 'The Art of Sourdough: Creating and Maintaining Your Starter',
+        slug: 'art-of-sourdough-starter',
+        excerpt:
+            'Learn how to create, maintain, and troubleshoot a healthy sourdough starter for delicious homemade bread.',
+        content: `
 # The Art of Sourdough: Creating and Maintaining Your Starter
 
 Sourdough bread has experienced a renaissance in recent years, and for good reason. The complex flavors, chewy texture, and health benefits make it a favorite among bread enthusiasts. At the heart of every great sourdough is a healthy, active starter.
@@ -240,8 +240,8 @@ For long-term storage, you can dry your starter or freeze it.
 
 Creating and maintaining a sourdough starter is both a science and an art. With patience and consistent care, your starter will become a reliable companion for creating delicious sourdough bread for years to come.
     `,
-    author: "Sarah Johnson",
-    publishedAt: "2023-07-10",
-    readingTime: "6 min read",
-  },
+        author: 'Sarah Johnson',
+        publishedAt: '2023-07-10',
+        readingTime: '6 min read',
+    },
 ];

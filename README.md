@@ -24,8 +24,8 @@ A food blog application built with Next.js 15, React 19, TypeScript, and Tailwin
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/culinary-canvas.git
-cd culinary-canvas
+git clone https://github.com/yourusername/next-pages-edge.git
+cd next-pages-edge
 ```
 
 2. Install dependencies:
@@ -70,12 +70,12 @@ yarn lint          # Run ESLint for code quality
 
 This project is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy your application.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fculinary-canvas)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fnext-pages-edge)
 
 ## Project Structure
 
 ```
-culinary-canvas/
+next-pages-edge/
 ├── public/              # Static assets
 ├── src/
 │   ├── components/      # React components
