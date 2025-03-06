@@ -1,6 +1,5 @@
 export const config = {
   runtime: 'experimental-edge',
-  regions: 'all',
 };
 
 export default async function handler() {

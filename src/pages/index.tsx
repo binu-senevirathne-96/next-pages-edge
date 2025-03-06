@@ -3,7 +3,6 @@ import Layout from '@/components/Layout';
 
 export const config = {
   runtime: 'experimental-edge',
-  regions: 'all',
 };
 
 export default function Home() {

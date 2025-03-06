@@ -4,7 +4,6 @@
   "devCommand": "yarn dev",
   "installCommand": "yarn install",
   "framework": "nextjs",
-  "regions": ["iad1"],
   "github": {
     "silent": true
   }
