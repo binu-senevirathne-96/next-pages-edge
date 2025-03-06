@@ -53,8 +53,22 @@ export default function Layout({
 
       <footer className="bg-blue-50 dark:bg-blue-900 border-t border-blue-200 dark:border-blue-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-blue-700 dark:text-blue-200">
-            &copy; {new Date().getFullYear()} Hello World App. Built with Next.js and Edge Runtime.
+          <p className="text-center text-blue-700 dark:text-blue-200 mb-2">
+            &copy; {new Date().getFullYear()} Hello World App. Built with Next.js Pages Router and
+            Edge Runtime.
+          </p>
+          <p className="text-center text-sm text-blue-600 dark:text-blue-300 mb-2">
+            Created to verify package compatibility with Pages Router and experimental-edge runtime
+          </p>
+          <p className="text-center text-sm text-blue-600 dark:text-blue-300">
+            <a
+              href="https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Learn about migrating to App Router
+            </a>
           </p>
         </div>
       </footer>

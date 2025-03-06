@@ -19,7 +19,11 @@ export default function Home({ packageData }: HomeProps) {
         <section className="text-center">
           <h1 className="text-4xl font-bold text-blue-800 dark:text-blue-100 mb-4">Hello World</h1>
           <p className="text-xl text-blue-700 dark:text-blue-200 max-w-3xl mx-auto">
-            A simple Next.js application running on Edge Runtime
+            A simple Next.js application using <b>Pages Router</b> + <b>Edge Runtime</b>
+          </p>
+          <p className="mt-2 text-md text-blue-600 dark:text-blue-300 max-w-3xl mx-auto">
+            Created to verify package compatibility with <b>Pages Router</b> and{' '}
+            <b>experimental-edge</b> runtime
           </p>
         </section>
 
@@ -30,7 +34,7 @@ export default function Home({ packageData }: HomeProps) {
                 Project Information
               </h2>
               <p className="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-300">
-                Details about this Next.js project
+                Details about this Next.js Pages Router project
               </p>
             </div>
             <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-5 sm:p-0">
@@ -53,6 +57,35 @@ export default function Home({ packageData }: HomeProps) {
                   <dt className="text-sm font-medium text-gray-500 dark:text-gray-300">Runtime</dt>
                   <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
                     experimental-edge
+                  </dd>
+                </div>
+                <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                    Router Type
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
+                    Pages Router (not App Router)
+                  </dd>
+                </div>
+                <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-300">Purpose</dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
+                    Verify package compatibility with Pages Router and experimental-edge runtime
+                  </dd>
+                </div>
+                <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                    Migration Guide
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
+                    <a
+                      href="https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline dark:text-blue-400"
+                    >
+                      App Router Migration Guide
+                    </a>
                   </dd>
                 </div>
               </dl>

@@ -1,10 +1,10 @@
-# Next.js 15 Edge Runtime Implementation Notes
+# Next.js 15 Edge Runtime Implementation Notes with Pages Router
 
-This document outlines the implementation of a Next.js 15 Hello World application with Edge Runtime, Pages Router, React 19, TypeScript, and other modern web technologies.
+This document outlines the implementation of a Next.js 15 Hello World application using the **Pages Router** (not App Router) with Edge Runtime, React 19, TypeScript, and other modern web technologies. This project was specifically created to verify compatibility and support of all packages with the Pages Router and experimental-edge runtime, rather than migrating to the App Router.
 
 ## Core Technologies
 
-- **Next.js 15**: Latest version with Pages Router support
+- **Next.js 15 Pages Router**: Using the traditional file-based routing system, not the newer App Router
 - **React 19**: Latest React version with improved performance
 - **TypeScript**: For type safety and better developer experience
 - **Edge Runtime**: For faster, more efficient server-side rendering
@@ -18,7 +18,34 @@ This application is implemented as a simple Hello World app that:
 
 - Displays package information from the project
 - Uses a clean blue color scheme
-- Demonstrates Edge Runtime capabilities
+- Demonstrates Edge Runtime capabilities with Pages Router
+- Showcases Next.js Pages Router architecture (not App Router)
+- Verifies package compatibility with experimental-edge runtime
+
+## Pages Router vs App Router
+
+This project intentionally uses the **Pages Router** architecture instead of the newer App Router for several reasons:
+
+1. **Edge Runtime Compatibility**: The Pages Router has more mature support for Edge Runtime
+2. **Package Compatibility**: To verify that all packages work correctly with Pages Router and experimental-edge runtime
+3. **Simpler Mental Model**: Pages Router follows a more traditional routing approach
+4. **Established Patterns**: Well-established patterns for data fetching and layouts
+5. **API Routes Structure**: Cleaner separation of API routes in the Pages Router
+
+> **Important**: This project was specifically created to test and demonstrate compatibility of modern packages with the Pages Router and experimental-edge runtime, rather than migrating to the App Router which might introduce additional compatibility challenges.
+
+> **Note**: If you're interested in migrating to the App Router in the future, refer to the official [Next.js App Router Migration Guide](https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration).
+
+### Key Differences Between Pages Router and App Router
+
+| Feature        | Pages Router                           | App Router                         |
+| -------------- | -------------------------------------- | ---------------------------------- |
+| Directory      | `/pages`                               | `/app`                             |
+| Data Fetching  | `getStaticProps`, `getServerSideProps` | React Server Components, `fetch()` |
+| Layouts        | `_app.js`, `_document.js`              | `layout.js`                        |
+| Error Handling | `_error.js`, `getInitialProps`         | `error.js`                         |
+| Loading States | Custom implementation                  | `loading.js`                       |
+| Route Handlers | API Routes in `/pages/api`             | Route Handlers in `/app/api`       |
 
 ## Project Structure
 
@@ -29,15 +56,15 @@ next-pages-edge/
 │   ├── common/          # Common functions
 │   │   └── packages.ts  # Package data functions
 │   ├── components/      # React components
-│   │   ├── Layout.tsx   # Layout component
+│   │   ├── Layout.tsx   # Layout component (Pages Router pattern)
 │   │   └── PackageList.tsx # Package list component
-│   ├── pages/           # Next.js pages
-│   │   ├── _app.tsx     # Custom App component
-│   │   ├── _document.tsx # Custom Document component
+│   ├── pages/           # Next.js Pages Router directory (not app/)
+│   │   ├── _app.tsx     # Custom App component (Pages Router specific)
+│   │   ├── _document.tsx # Custom Document component (Pages Router specific)
 │   │   ├── index.tsx    # Home page with Edge Runtime
 │   │   ├── 404.tsx      # Custom 404 page
-│   │   ├── _error.tsx   # Custom error page
-│   │   └── api/         # API routes
+│   │   ├── _error.tsx   # Custom error page (Pages Router specific)
+│   │   └── api/         # API routes (Pages Router pattern)
 │   │       ├── hello.ts # Hello API route
 │   │       └── packages.ts # Packages API endpoint
 │   ├── types/           # TypeScript type definitions
@@ -284,6 +311,28 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
 ## Conclusion
 
 Next.js 15 with Edge Runtime, Pages Router, React 19, and TypeScript offers a powerful combination for building modern web applications. While there are challenges to overcome, the benefits of improved performance and developer experience make it worthwhile. By following the solutions outlined in this document, you can successfully implement these technologies in your projects.
+
+## Package Compatibility with Pages Router and Edge Runtime
+
+This project was specifically created to verify the compatibility of modern packages with the Pages Router and experimental-edge runtime. Here's what we found:
+
+1. **React 19**: Fully compatible with Pages Router and experimental-edge runtime
+2. **TypeScript**: Works seamlessly with proper type definitions
+3. **Tailwind CSS 4**: No compatibility issues when configured correctly
+4. **ESLint 9**: Works well with appropriate configuration
+5. **Turbopack**: Compatible with Pages Router and experimental-edge runtime
+
+### Why Not Migrate to App Router?
+
+While the App Router offers many new features, there are several reasons to maintain a Pages Router project:
+
+1. **Established Codebase**: Many projects have a large existing codebase built on Pages Router
+2. **Edge Runtime Support**: The Pages Router has more mature support for Edge Runtime
+3. **Simpler Mental Model**: Pages Router follows a more traditional and familiar routing approach
+4. **API Routes Structure**: Cleaner separation of API routes in the Pages Router
+5. **Package Compatibility**: Some packages may not yet be fully compatible with App Router
+
+This project demonstrates that it's possible to use modern packages and features while maintaining a Pages Router architecture, without the need to migrate to the App Router.
 
 ## Edge Runtime Configuration
 
