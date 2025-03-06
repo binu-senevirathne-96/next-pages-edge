@@ -8,12 +8,15 @@ interface ErrorProps {
 
 const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   return (
-    <Layout title={`Error ${statusCode || 'Unknown'} | Edge Blog`} description="An error occurred">
+    <Layout
+      title={`Error ${statusCode || 'Unknown'} | Hello World`}
+      description="An error occurred"
+    >
       <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
-        <h1 className="text-6xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 className="text-6xl font-bold text-blue-800 dark:text-blue-100 mb-4">
           {statusCode ? `${statusCode}` : 'Error'}
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-xl text-blue-600 dark:text-blue-300 mb-8">
           {statusCode
             ? `An error ${statusCode} occurred on the server`
             : 'An error occurred on the client'}

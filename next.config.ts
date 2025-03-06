@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: [],
   },
-  // Disable experimental Edge runtime warnings
+  // Disable Edge runtime warnings
   experimental: {
     // This helps with Edge runtime compatibility
     disableOptimizedLoading: true,
