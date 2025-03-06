@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
   experimental: {
     // This helps with Edge runtime compatibility
     disableOptimizedLoading: true,
+    // Disable use-cache for Edge runtime
+    useCache: false,
   },
   // Add custom headers
   async headers() {
@@ -33,10 +35,6 @@ const nextConfig: NextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
-          },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
           },
         ],
       },
