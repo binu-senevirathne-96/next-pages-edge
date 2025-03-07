@@ -2,10 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { PackageData } from '@/types';
 import { fetchPackageInfo } from '@/common/packages';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
-
 export default async function handler(_req: NextApiRequest, res: NextApiResponse<PackageData>) {
   try {
     const packageData = await fetchPackageInfo();
